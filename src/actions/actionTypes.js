@@ -1,0 +1,3 @@
+export const GET_ALL_HEROES = 'GET_ALL_HEROES';
+export const CREATE_NEW_HEROES = 'CREATE_NEW_HEROES';
+export const REMOVE_HEROES = 'REMOVE_HEROES';
