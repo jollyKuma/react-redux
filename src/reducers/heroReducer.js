@@ -13,7 +13,10 @@ export default ( state = [], action) => {
 			return  state.filter((hero) => hero.id !== action.id);
 
 		case actionTypes.EDIT_HERO:
-		return state.filter((hero) => hero.id === action.id);
+
+			console.log(state);
+			return  state.filter((hero) => hero.id == action.id);
+
 
 		default:
 			return state;

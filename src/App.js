@@ -28,7 +28,6 @@ class App extends Component {
 
     handleSubmit(e) {
       e.preventDefault();
-
       let hero = {
         id: Date.now(),
         name: this.state.hero.name,
@@ -41,7 +40,6 @@ class App extends Component {
           description: ''
          }
       });
-
       this.props.createHero(hero);
 
     }
@@ -66,10 +64,12 @@ class App extends Component {
       e.preventDefault();
       this.setState({
         hero: {
+          id: index.id,
           name: index.name,
           description: index.description
          }
       });
+        this.props.editHero(index);
     }
 
   render() {
