@@ -29,16 +29,18 @@ class App extends Component {
     handleSubmit(e) {
       e.preventDefault();
 
-      //const { hero } = this.state;
-      console.log(this.state.hero.name);
       let hero = {
         id: Date.now(),
         name: this.state.hero.name,
         description: this.state.hero.description
       }
-      //hero['id'] = Date.now();
-      console.log(hero.name);
-      console.log(hero);
+
+      this.setState({
+        hero: {
+          name: '',
+          description: ''
+         }
+      });
 
       this.props.createHero(hero);
 
@@ -50,6 +52,7 @@ class App extends Component {
           <span>{data.name} : </span>
           <span>{data.description}</span>
           <button onClick={(e) => this.removeHero(e, data)}>Remove</button>
+          <button onClick={(e) => this.editHero(e, data)}>Edit</button>
         </li>
       )
     }
@@ -57,6 +60,16 @@ class App extends Component {
     removeHero(e, index) {
       e.preventDefault();
       this.props.removeHero(index);
+    }
+
+    editHero(e, index) {
+      e.preventDefault();
+      this.setState({
+        hero: {
+          name: index.name,
+          description: index.description
+         }
+      });
     }
 
   render() {
@@ -97,7 +110,8 @@ const mapStateToProps = (state, ownProps) => {
 const mapDispatchToProps = (dispatch) => {
     return {
        createHero: hero =>dispatch(heroAction.createHero(hero)),
-       removeHero: index => dispatch(heroAction.removeHero(index))
+       removeHero: index => dispatch(heroAction.removeHero(index)),
+       editHero: hero => dispatch(heroAction.editHero(hero))
     }
   };
 

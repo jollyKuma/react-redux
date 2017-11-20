@@ -8,9 +8,15 @@ export const createHero = (hero) => {
 };
 
 export const removeHero = (hero) => {
-  
   return {
     type: actionTypes.REMOVE_HEROES,
+    id: hero.id
+  }
+}
+
+export const editHero = (hero) => {
+  return {
+    type: actionTypes.EDIT_HERO,
     id: hero.id
   }
 }
