@@ -2,6 +2,7 @@ import React, { Component } from 'react';
 import { connect } from 'react-redux';
 import * as heroAction from './actions/heroAction';
 
+import Menu from './components/Menu';
 class App extends Component {
 
   constructor(props) {
@@ -92,6 +93,7 @@ class App extends Component {
     return (
       <div>
         <h1>React Hero Tour</h1>
+        <Menu />
         <hr/>
         <div>
           <h3>Add hero</h3>

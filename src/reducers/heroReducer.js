@@ -17,12 +17,12 @@ export default ( state = [], action) => {
 			{
 				if(hero.id === action.data.id) {
 							Object.assign(hero, action.data);
-							// hero.id = action.data.id
-							// hero.name = action.data.name;
-							// hero.description = action.data.description;
 				}
 				return hero;
 			});
+			break;
+		case actionTypes.GET_ALL_HEROES:
+			return state
 
 		default:
 			return state;

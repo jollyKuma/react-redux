@@ -20,3 +20,10 @@ export const editHero = (hero) => {
     data: hero
   }
 }
+
+export const getAllHero = (hero) => {
+  return {
+    type: actionTypes.GET_ALL_HEROES,
+    data: hero
+  }
+}
