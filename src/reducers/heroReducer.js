@@ -16,10 +16,10 @@ export default ( state = [], action) => {
 			state.map((hero) =>
 			{
 				if(hero.id === action.data.id) {
-							//Object.assign({}, action.data);
-							hero.id = action.data.id
-							hero.name = action.data.name;
-							hero.description = action.data.description;
+							Object.assign(hero, action.data);
+							// hero.id = action.data.id
+							// hero.name = action.data.name;
+							// hero.description = action.data.description;
 				}
 				return hero;
 			});
