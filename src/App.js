@@ -18,7 +18,6 @@ class App extends Component {
     }
 
     handleChange(e, data) {
-
       const { hero } = this.state;
       hero[e.target.name] = e.target.value
       this.setState({
@@ -28,20 +27,37 @@ class App extends Component {
 
     handleSubmit(e) {
       e.preventDefault();
-      let hero = {
-        id: Date.now(),
-        name: this.state.hero.name,
-        description: this.state.hero.description
+      let currentstate = this.state;
+      if (currentstate.hero.id === undefined) {
+          let hero = {
+            id: Date.now(),
+            name: this.state.hero.name,
+            description: this.state.hero.description
+          }
+
+          this.setState({
+            hero: {
+              name: '',
+              description: ''
+             }
+          });
+          this.props.createHero(hero);
+      } else {
+
+        let hero = {
+          id:  this.state.hero.id,
+          name: this.state.hero.name,
+          description: this.state.hero.description
+        }
+
+        this.setState({
+          hero: {
+            name: '',
+            description: ''
+           }
+        });
+          this.props.editHero(hero);
       }
-
-      this.setState({
-        hero: {
-          name: '',
-          description: ''
-         }
-      });
-      this.props.createHero(hero);
-
     }
 
     listView(data, index) {
@@ -60,16 +76,15 @@ class App extends Component {
       this.props.removeHero(index);
     }
 
-    editHero(e, index) {
+    editHero(e, data) {
       e.preventDefault();
       this.setState({
         hero: {
-          id: index.id,
-          name: index.name,
-          description: index.description
+          id: data.id,
+          name: data.name,
+          description: data.description
          }
       });
-        this.props.editHero(index);
     }
 
   render() {

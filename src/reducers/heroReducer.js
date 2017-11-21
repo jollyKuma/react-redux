@@ -13,10 +13,16 @@ export default ( state = [], action) => {
 			return  state.filter((hero) => hero.id !== action.id);
 
 		case actionTypes.EDIT_HERO:
-
-			console.log(state);
-			return  state.filter((hero) => hero.id == action.id);
-
+			state.map((hero) =>
+			{
+				if(hero.id === action.data.id) {
+							//Object.assign({}, action.data);
+							hero.id = action.data.id
+							hero.name = action.data.name;
+							hero.description = action.data.description;
+				}
+				return hero;
+			});
 
 		default:
 			return state;

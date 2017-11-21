@@ -17,6 +17,6 @@ export const removeHero = (hero) => {
 export const editHero = (hero) => {
   return {
     type: actionTypes.EDIT_HERO,
-    id: hero.id
+    data: hero
   }
 }
